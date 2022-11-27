@@ -1,4 +1,15 @@
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+useHead({
+  title: "Home",
+  meta: [
+    {
+      name: "description",
+      content: "Home",
+    },
+  ],
+  titleTemplate: "Elon's Blog - %s",
+});
+</script>
 <template>
   <main>
     <PageHeader>

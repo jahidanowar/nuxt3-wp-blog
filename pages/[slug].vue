@@ -1,10 +1,22 @@
 <script lang="ts" setup>
 const params = useRoute().params;
+
+useHead({
+  title: `${params.slug}`,
+  meta: [
+    {
+      name: "description",
+      content: `${params.slug}`,
+    },
+  ],
+});
 </script>
 <template>
-  <section class="container blog py-20">
+  <section class="container blog py-10 sm:py-16">
     <div class="sm:px-20">
-      <h1 class="blog__title text-5xl font-bold text-center leading-snug mb-5">
+      <h1
+        class="blog__title text-3xl sm:text-5xl font-bold text-center leading-snug mb-5"
+      >
         How to make a Reusable OTP Input Field with Vue 3 and Tailwind CSS
       </h1>
       <div class="flex mb-10 justify-center gap-5">
@@ -16,7 +28,7 @@ const params = useRoute().params;
         >
       </div>
       <div
-        class="blog__image h-[500px] w-full rounded shadow-xl relative overflow-hidden mb-12"
+        class="blog__image h-[250px] sm:h-[500px] w-full rounded shadow-xl relative overflow-hidden mb-12"
       >
         <img
           src="https://i.ibb.co/mJH7pyX/elon.png"
@@ -95,22 +107,22 @@ const params = useRoute().params;
 }
 
 .blog__content h1 {
-  @apply text-4xl;
+  @apply text-2xl sm:text-4xl;
 }
 
 .blog__content h2 {
-  @apply text-3xl;
+  @apply text-xl sm:text-3xl;
 }
 
 .blog__content h3 {
-  @apply text-2xl;
+  @apply text-lg sm:text-2xl;
 }
 
 .blog__content h4 {
-  @apply text-xl;
+  @apply sm:text-xl;
 }
 
 .blog__content h5 {
-  @apply text-lg;
+  @apply text-sm sm:text-lg;
 }
 </style>

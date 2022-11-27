@@ -1,5 +1,14 @@
 <script lang="ts" setup>
 const params = useRoute().params;
+useHead({
+  title: `Category ${params.slug}`,
+  meta: [
+    {
+      name: "description",
+      content: `Category ${params.slug}`,
+    },
+  ],
+});
 </script>
 
 <template>

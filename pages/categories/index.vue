@@ -1,5 +1,14 @@
 <script lang="ts" setup>
 import colorGenerator from "~~/utils/colorGenerator";
+useHead({
+  title: "Categories",
+  meta: [
+    {
+      name: "description",
+      content: "Categories",
+    },
+  ],
+});
 </script>
 <template>
   <PageHeader title="Categories"> </PageHeader>
@@ -11,7 +20,7 @@ import colorGenerator from "~~/utils/colorGenerator";
           :key="i"
           :to="`/categories/${i}`"
           class="flex items-center justify-center py-2 px-4 rounded text-white shadow-md hover:shadow-lg duration-200 text-2xl uppercase"
-          :class="colorGenerator()"
+          :style="{ backgroundColor: colorGenerator() }"
         >
           <span class="font-semibold">#{{ i }}category</span>
         </NuxtLink>
