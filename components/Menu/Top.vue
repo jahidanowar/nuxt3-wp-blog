@@ -1,7 +1,9 @@
 <script lang="ts" setup></script>
 <template>
   <nav class="bg-gray-900 text-white py-5 border-b border-gray-700">
-    <div class="container flex justify-between items-center">
+    <div
+      class="container flex justify-center gap-3 sm:gap-0 sm:justify-between items-center flex-wrap"
+    >
       <NuxtLink to="/" class="text-2xl font-medium">Elon's Blog</NuxtLink>
       <ul class="nav">
         <li>
