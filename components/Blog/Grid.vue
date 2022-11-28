@@ -11,12 +11,12 @@ defineProps<{
   <div class="grid shadow-xl group overflow-hidden rounded">
     <div
       v-if="image"
-      class="grid__image h-[200px] w-full relative overflow-hidden"
+      class="grid__image h-[180px] w-full relative overflow-hidden"
     >
       <img
         :src="image"
         :alt="title"
-        class="absolute object-cover w-full h-full group-hover:scale-125 duration-300"
+        class="absolute object-cover w-full h-full group-hover:scale-110 duration-300"
       />
     </div>
     <div class="grid__content p-5">
