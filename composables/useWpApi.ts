@@ -9,14 +9,14 @@ export default () => {
   };
 
   const getPosts = async (
-    fields: string = "author,id,excerpt,title,link,slug,date",
+    category?: number,
     page: number = 1,
     perPgae: number = 20,
-    category?: number
+    fields: string = "author,id,excerpt,title,link,slug,date"
   ) => {
     let query: string = `posts?page=${page}&per_page=${perPgae}&_embed=1`;
     if (category) {
-      query += `&category=${category}`;
+      query += `&categories=${category}`;
     }
     return get<Post[]>(query);
   };
@@ -29,10 +29,15 @@ export default () => {
     return useFetch(`${wpUri}/wp-json/wp/v2/categories`);
   };
 
+  const getCatgory = async (slug: string) => {
+    return useFetch<any>(`${wpUri}/wp-json/wp/v2/categories?slug=${slug}`);
+  };
+
   return {
     get,
     getPosts,
     getPost,
     getCatgories,
+    getCatgory,
   };
 };

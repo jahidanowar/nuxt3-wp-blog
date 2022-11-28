@@ -1,7 +1,16 @@
 <script lang="ts" setup>
 const params = useRoute().params;
+
+const { data: categories, error } = await useWpApi().getCatgory(
+  params.slug as string
+);
+const category = categories.value[0];
+const { data: posts, error: postsError } = await useWpApi().getPosts(
+  category.id
+);
+
 useHead({
-  title: `Category ${params.slug}`,
+  title: `Archive: ${category.name}`,
   meta: [
     {
       name: "description",
@@ -12,17 +21,17 @@ useHead({
 </script>
 
 <template>
-  <PageHeader :title="`Category ${params.slug}`"> </PageHeader>
+  <PageHeader :title="`Archive: ${category.name}`"> </PageHeader>
   <section class="blogs blogs-archive">
     <div class="container py-10">
       <div class="grid sm:grid-cols-3 gap-10">
         <BlogGrid
-          v-for="i in 9"
-          :key="i"
-          title=" How to make a Reusable OTP Input Field with Vue 3 and Tailwind CSS"
-          image="https://i.ibb.co/mJH7pyX/elon.png"
-          excerpt="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod."
-          slug="1"
+          v-for="post in posts"
+          :key="post.id"
+          :title="post.title.rendered"
+          :image="post._embedded['wp:featuredmedia'][0]?.source_url"
+          :excerpt="post.excerpt.rendered"
+          :slug="post.slug"
         ></BlogGrid>
       </div>
     </div>
