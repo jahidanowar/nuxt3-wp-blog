@@ -14,15 +14,15 @@ export default () => {
     perPgae: number = 20,
     category?: number
   ) => {
-    let query: string = `posts?_fields=${fields}&page=${page}&per_page=${perPgae}&_embed=1`;
+    let query: string = `posts?page=${page}&per_page=${perPgae}&_embed=1`;
     if (category) {
       query += `&category=${category}`;
     }
-    return get<Post>(query);
+    return get<Post[]>(query);
   };
 
   const getPost = async (slug: string) => {
-    return useFetch(`${wpUri}/wp-json/wp/v2/post?slug=${slug}&_embed=1`);
+    return useFetch<any>(`${wpUri}/wp-json/wp/v2/posts?slug=${slug}&_embed=1`);
   };
 
   const getCatgories = async (fields: string = "name,slug,count") => {

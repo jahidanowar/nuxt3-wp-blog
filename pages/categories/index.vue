@@ -9,6 +9,8 @@ useHead({
     },
   ],
 });
+
+const { data: categories } = await useWpApi().getCatgories();
 </script>
 <template>
   <PageHeader title="Categories"> </PageHeader>
@@ -16,13 +18,13 @@ useHead({
     <div class="container">
       <div class="flex flex-wrap gap-5">
         <NuxtLink
-          v-for="i in 20"
-          :key="i"
-          :to="`/categories/${i}`"
+          v-for="category in categories"
+          :key="(category as any).id"
+          :to="`/categories/${(category as any).slug}`"
           class="flex items-center justify-center py-2 px-4 rounded text-white shadow-md hover:shadow-lg duration-200 text-2xl uppercase"
           :style="{ backgroundColor: colorGenerator() }"
         >
-          <span class="font-semibold">#{{ i }}category</span>
+          <span class="font-semibold">#{{ (category as any).name }}</span>
         </NuxtLink>
       </div>
     </div>
