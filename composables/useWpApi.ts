@@ -1,11 +1,16 @@
+/**
+ * WordPress Composables
+ * A collection of WordPress composable functions.
+ */
+
 import { Post } from "~~/types/Post.type";
 
-export default () => {
+export default async () => {
   const config = useRuntimeConfig();
-  const wpUri = config.public.wpUri;
+  const WP_URL: string = config.wpUrl;
 
   const get = async <T>(endpoint: string) => {
-    return useFetch<T>(`${wpUri}/wp-json/wp/v2/${endpoint}`);
+    return useFetch<T>(`${WP_URL}/wp-json/wp/v2/${endpoint}`);
   };
 
   const getPosts = async (
@@ -22,15 +27,15 @@ export default () => {
   };
 
   const getPost = async (slug: string) => {
-    return useFetch<any>(`${wpUri}/wp-json/wp/v2/posts?slug=${slug}&_embed=1`);
+    return get<Post>(`posts?slug=${slug}&_embed=1`);
   };
 
   const getCatgories = async (fields: string = "name,slug,count") => {
-    return useFetch(`${wpUri}/wp-json/wp/v2/categories`);
+    return get<any>(`categories`);
   };
 
   const getCatgory = async (slug: string) => {
-    return useFetch<any>(`${wpUri}/wp-json/wp/v2/categories?slug=${slug}`);
+    return get<any>(`categories?slug=${slug}`);
   };
 
   return {
