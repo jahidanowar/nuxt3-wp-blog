@@ -3,11 +3,11 @@
  * A collection of WordPress composable functions.
  */
 
-import { Post } from "~~/types/Post.type";
+import { Post } from "~~/types/post";
 
-export default async () => {
+export default () => {
   const config = useRuntimeConfig();
-  const WP_URL: string = config.wpUrl;
+  const WP_URL: string = config.wpUri;
 
   const get = async <T>(endpoint: string) => {
     return useFetch<T>(`${WP_URL}/wp-json/wp/v2/${endpoint}`);
@@ -27,7 +27,7 @@ export default async () => {
   };
 
   const getPost = async (slug: string) => {
-    return get<Post>(`posts?slug=${slug}&_embed=1`);
+    return get<Post[]>(`posts?slug=${slug}&_embed=1`);
   };
 
   const getCatgories = async (fields: string = "name,slug,count") => {
