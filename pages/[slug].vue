@@ -1,22 +1,22 @@
 <script lang="ts" setup>
 const params = useRoute().params;
 
+const { data: posts } = await useWpApi().getPost(params.slug as string);
+const post = posts.value?.[0];
+
 useHead({
-  title: `${params.slug}`,
+  title: post?.title.rendered,
   meta: [
     {
       name: "description",
-      content: `${params.slug}`,
+      content: `${post?.excerpt.rendered}`,
     },
   ],
 });
-
-const { data: posts } = await useWpApi().getPost(params.slug as string);
-const post = posts.value[0];
 </script>
 <template>
   <section class="container blog py-10 sm:py-16">
-    <div class="sm:px-20">
+    <div v-if="post" class="sm:px-20">
       <!-- Blog Title  -->
       <h1
         class="blog__title text-3xl sm:text-5xl font-bold text-center leading-snug mb-5"
@@ -48,7 +48,7 @@ const post = posts.value[0];
         />
       </div>
       <div class="blog__content">
-        <div v-html="post.content.rendered"></div>
+        <div v-if="post.content" v-html="post.content.rendered"></div>
       </div>
     </div>
   </section>

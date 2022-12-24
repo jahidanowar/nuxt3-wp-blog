@@ -5,5 +5,5 @@ After completing this tutorial, you will be able to deploy any Nuxt 3 app to Dig
 
 ## Prerequisites
 
-- [ ] [Digital Ocean](https://jahid.dev/go/digitalocean/) account
-- [ ] A working Nuxt project
+- [x] [Digital Ocean](https://jahid.dev/go/digitalocean/) account
+- [x] A working Nuxt project

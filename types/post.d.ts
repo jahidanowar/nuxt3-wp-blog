@@ -11,4 +11,7 @@ export interface Post {
   link: string;
   author: string;
   _embedded: any;
+  content: {
+    rendered: string;
+  };
 }

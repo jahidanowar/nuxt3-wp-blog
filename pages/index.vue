@@ -33,7 +33,7 @@ const { data: blogs, refresh, error } = await useWpApi().getPosts();
             sh*t post on twitter.
           </p>
           <a
-            href="https://twitter.com/elonmusk"
+            href="https://twitter.com/jahiddev"
             class="bg-primary-500 hover:bg-primary-600 py-2 px-4 rounded text-white inline-flex items-center gap-2"
           >
             <svg
