@@ -1,0 +1,13 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="npm run dev -- -o" type="js.build_tools.npm">
+    <package-json value="$PROJECT_DIR$/package.json" />
+    <command value="run" />
+    <scripts>
+      <script value="dev" />
+    </scripts>
+    <arguments value="-- -o" />
+    <node-interpreter value="$USER_HOME$/.nvm/versions/node/v18.16.0/bin/node" />
+    <envs />
+    <method v="2" />
+  </configuration>
+</component>
