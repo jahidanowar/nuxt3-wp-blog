@@ -62,7 +62,7 @@ const { data: blogs, refresh, error } = await useWpApi().getPosts();
             v-for="blog in blogs"
             :key="blog.id"
             :title="blog.title.rendered"
-            :image="blog._embedded['wp:featuredmedia'][0]?.source_url"
+            :image="blog && blog._embedded && blog._embedded['wp:featuredmedia'] ? blog._embedded['wp:featuredmedia'][0].source_url : ' '"
             :excerpt="blog.excerpt.rendered"
             :slug="blog.slug"
           ></BlogGrid>
