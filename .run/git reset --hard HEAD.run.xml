@@ -1,0 +1,5 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="git reset --hard HEAD" type="PhpLocalRunConfigurationType" factoryName="PHP Console" path="$PROJECT_DIR$/git-reset.php">
+    <method v="2" />
+  </configuration>
+</component>
